@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Al Hamad Document API</title>
+</head>
+<body>
+    <h1>Welcome to Al Hamad Group of Companies Document API</h1>
+    <p id="version">Loading version...</p> <!-- Added this -->
+
+    <script>
+    	fetch(`${window.location.origin}${window.location.pathname}api/version`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('version').innerText =
+                    `Version: ${data.version} | Updated: ${data.dateUpdated}`;
+            })
+            .catch(err => {
+                document.getElementById('version').innerText = 'Version info not available';
+            });
+    </script>
+</body>
+</html>
